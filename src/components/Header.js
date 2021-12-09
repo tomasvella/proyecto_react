@@ -1,3 +1,4 @@
+import CartWidget from './CartWidget';
 import '../css/header.css';
 
 const Header = () => {
@@ -14,11 +15,9 @@ const Header = () => {
             <a href='/shop'>Tienda</a>
           </li>
           <li>
-            <a href='/cart'>Carrito</a>
-          </li>
-          <li>
             <a href='/contact'>Contacto</a>
           </li>
+          <CartWidget />
         </ul>
       </nav>
       <label for='nav-toggle' class='nav-toggle-label'>

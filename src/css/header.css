@@ -1,7 +1,7 @@
 header {
   background: var(--background-header-color);
   text-align: center;
-  position: fixed;
+  position: relative;
   z-index: 999;
   width: 100%;
   padding: 1em;
@@ -58,7 +58,7 @@ header {
 
 nav {
   position: absolute;
-  text-align: left;
+  text-align: center;
   top: 100%;
   left: 0;
   background: var(--background-header-color);
@@ -128,6 +128,7 @@ nav a:hover {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    padding-inline-end: 1em;
   }
 
   nav ul {
