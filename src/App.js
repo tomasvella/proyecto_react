@@ -1,6 +1,7 @@
 import Header from './components/Header';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 import ItemListContainer from './components/ItemListContainer';
+import ItemCount from './components/ItemCount';
 import './css/app.css';
 
 const App = () => {
@@ -8,7 +9,8 @@ const App = () => {
     <>
       <Header />
       <ItemListContainer greetings={'Bienvenido'} />
-      <Footer />
+      <ItemCount available={100} />
+      {/* <Footer /> */}
     </>
   );
 };
