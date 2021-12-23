@@ -34,7 +34,7 @@ const ItemCount = ({ stock, initial, addCart }) => {
 
   return (
     <div className='product-detail'>
-      <p>Cantidad a comprar: {count}.</p>
+      <p>Cantidad a comprar: {count}</p>
       <CardActions>
         <Button onClick={increment} size='small'>
           +

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
@@ -35,7 +36,7 @@ const Item = ({ id, title, image, price, description }) => {
             </Grid>
             <Grid item>
               <Typography sx={{ cursor: 'pointer' }} variant='body2'>
-                Detalles
+                <Link to={`/product/${id}`}>Detalles</Link>
               </Typography>
             </Grid>
           </Grid>

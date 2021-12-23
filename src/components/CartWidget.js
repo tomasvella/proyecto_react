@@ -1,13 +1,5 @@
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
 const CartWidget = () => {
-  return (
-    <li>
-      <a href='/cart'>
-        <ShoppingCartIcon />
-      </a>
-    </li>
-  );
+  return <div>Carrito de compras</div>;
 };
 
 export default CartWidget;

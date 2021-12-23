@@ -1,32 +1,42 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import '../../css/container.css';
 
-const ItemListContainer = ({ greetings }) => {
+const ItemListContainer = () => {
   const [itemList, setItemList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { id } = useParams();
 
-  const fetchData = () => {
-    fetch('https://fakestoreapi.com/products/category/electronics')
+  const setFetchUrl = () => {
+    if (id !== undefined) {
+      return 'https://fakestoreapi.com/products/category/' + id;
+    } else {
+      return 'https://fakestoreapi.com/products';
+    }
+  };
+
+  const fetchProducts = () => {
+    fetch(setFetchUrl())
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setItemList(data);
+      })
+      .then(() => {
         setLoading(false);
       });
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchProducts();
+  }, [id]);
 
   return (
     <div className='container'>
-      <h1>{greetings}</h1>
       {loading ? (
         <Box>
           <CircularProgress color='inherit' />

@@ -1,24 +1,30 @@
 import { Link, NavLink } from 'react-router-dom';
-import CartWidget from './CartWidget';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import '../css/header.css';
 
-const Header = () => {
+const Header = ({ links }) => {
   return (
     <header>
-      <img src='./viettel.svg' alt='Cart Logo' className='logo' />
+      <NavLink to='/'>
+        <img src='../viettel.svg' alt='Cart Logo' className='logo' />
+      </NavLink>
       <input type='checkbox' id='nav-toggle' className='nav-toggle' />
       <nav>
         <ul>
+          {links.map((link) => {
+            return (
+              <li>
+                <NavLink key={link.id} to={link.path}>
+                  {link.name}
+                </NavLink>
+              </li>
+            );
+          })}
           <li>
-            <a href='/'>Inicio</a>
+            <NavLink to='/carrito'>
+              <ShoppingCartIcon />
+            </NavLink>
           </li>
-          <li>
-            <a href='/shop'>Tienda</a>
-          </li>
-          <li>
-            <a href='/contact'>Contacto</a>
-          </li>
-          <CartWidget />
         </ul>
       </nav>
       <label for='nav-toggle' class='nav-toggle-label'>

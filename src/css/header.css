@@ -101,7 +101,7 @@ nav a:hover {
   transition: opacity 250ms ease-in-out 250ms;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1055px) {
   .nav-toggle-label {
     display: none;
   }
@@ -133,6 +133,7 @@ nav a:hover {
 
   nav ul {
     display: flex;
+    align-items: center;
   }
 
   nav li {
@@ -160,5 +161,9 @@ nav a:hover {
 
   nav a:hover::before {
     transform: scale(1, 1);
+  }
+
+  svg {
+    transform: translateY(15%);
   }
 }
