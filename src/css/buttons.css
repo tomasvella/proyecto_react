@@ -4,7 +4,7 @@
   --font-color: hsl(40, 100%, 51%);
 }
 
-.product-detail button {
+.product-detail .button {
   background: var(--font-color);
   border: 1px solid var(--background-header-color);
   border-radius: 3px;
@@ -21,7 +21,7 @@
   white-space: nowrap;
 }
 
-.product-detail button:hover {
+.product-detail .button:hover {
   background: var(--background-header-color);
   color: var(--font-color);
 }

@@ -24,7 +24,7 @@ const App = () => {
             element={<ItemListContainer links={links} />}
           />
           <Route path='/product/:id' element={<ItemDetailContainer />} />
-          <Route path='/carrito' element={<CartWidget />} />
+          <Route path='/cart' element={<CartWidget />} />
         </Routes>
       </main>
       {/* <Footer /> */}

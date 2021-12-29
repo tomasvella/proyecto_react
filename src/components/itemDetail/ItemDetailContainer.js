@@ -15,7 +15,6 @@ const ItemDetailContainer = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setProduct(data);
       })
       .then(() => {

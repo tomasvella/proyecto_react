@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import '../css/header.css';
 
@@ -21,7 +21,7 @@ const Header = ({ links }) => {
             );
           })}
           <li>
-            <NavLink to='/carrito'>
+            <NavLink to='/cart'>
               <ShoppingCartIcon />
             </NavLink>
           </li>

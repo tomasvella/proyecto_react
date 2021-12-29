@@ -1,9 +1,12 @@
 import ItemCount from './ItemCount';
+import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Img = styled('img')({
   margin: 'auto',
@@ -13,8 +16,25 @@ const Img = styled('img')({
 });
 
 const ItemDetail = ({ product }) => {
-  const addCart = (quantity) => {
-    console.log(`Cantidad de productos en el carrito: ${quantity}`);
+  const [count, setCount] = useState(0);
+  const [addProductToCart, setAddProductToCart] = useState([]);
+  const [isProductAdded, setIsProductAdded] = useState(false);
+
+  const addToCart = (e) => {
+    e.preventDefault();
+    setAddProductToCart([...addProductToCart, { product, count }]);
+    setIsProductAdded(true);
+    setCount(0);
+    console.log(`Cantidad de productos en el carrito: ${count}`);
+    toast.success('Producto agregado al carrito.', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   return (
@@ -48,8 +68,13 @@ const ItemDetail = ({ product }) => {
             </Grid>
           </Grid>
         </Grid>
+        <ItemCount
+          addToCart={addToCart}
+          count={count}
+          setCount={setCount}
+          isProductAdded={isProductAdded}
+        />
       </Paper>
-      <ItemCount initial={1} addCart={addCart} />
     </article>
   );
 };
