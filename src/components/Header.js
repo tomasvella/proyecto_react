@@ -1,8 +1,10 @@
 import { NavLink } from 'react-router-dom';
+import { useCustomContext } from '../context/CartContext';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import '../css/header.css';
 
 const Header = ({ links }) => {
+  const { cartItems } = useCustomContext();
   return (
     <header>
       <NavLink to='/'>
@@ -20,11 +22,15 @@ const Header = ({ links }) => {
               </li>
             );
           })}
-          <li>
-            <NavLink to='/cart'>
-              <ShoppingCartIcon />
-            </NavLink>
-          </li>
+
+          {cartItems.length > 0 ? (
+            <li>
+              <NavLink to='/cart'>
+                <ShoppingCartIcon />
+                <span className='cart-count'>{cartItems.length}</span>
+              </NavLink>
+            </li>
+          ) : null}
         </ul>
       </nav>
       <label for='nav-toggle' class='nav-toggle-label'>

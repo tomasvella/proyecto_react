@@ -8,8 +8,8 @@ import ButtonBase from '@mui/material/ButtonBase';
 const Img = styled('img')({
   margin: 'auto',
   display: 'block',
-  maxWidth: '100%',
-  maxHeight: '100%',
+  maxWidth: '75%',
+  maxHeight: '75%',
 });
 
 const Item = ({ id, title, image, price, description }) => {
@@ -18,7 +18,9 @@ const Item = ({ id, title, image, price, description }) => {
       <Grid container spacing={2}>
         <Grid item>
           <ButtonBase sx={{ width: 128, height: 128 }}>
-            <Img alt={title} src={image} />
+            <Link to={`/product/${id}`}>
+              <Img alt={title} src={image} />
+            </Link>
           </ButtonBase>
         </Grid>
         <Grid item xs={12} sm container>

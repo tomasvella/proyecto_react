@@ -6,28 +6,26 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
 import { toast } from 'react-toastify';
+import { useCustomContext } from '../../context/CartContext';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Img = styled('img')({
   margin: 'auto',
   display: 'block',
-  maxWidth: '100%',
-  maxHeight: '100%',
+  maxWidth: '75%',
+  maxHeight: '75%',
 });
 
 const ItemDetail = ({ product }) => {
-  const [count, setCount] = useState(0);
-  const [addProductToCart, setAddProductToCart] = useState([]);
   const [isProductAdded, setIsProductAdded] = useState(false);
+  const { addToCart } = useCustomContext();
 
-  const addToCart = (e) => {
-    e.preventDefault();
-    setAddProductToCart([...addProductToCart, { product, count }]);
+  const onAdd = (count) => {
+    addToCart(count, product);
     setIsProductAdded(true);
-    setCount(0);
     console.log(`Cantidad de productos en el carrito: ${count}`);
     toast.success('Producto agregado al carrito.', {
-      position: 'top-right',
+      position: 'bottom-right',
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -68,12 +66,7 @@ const ItemDetail = ({ product }) => {
             </Grid>
           </Grid>
         </Grid>
-        <ItemCount
-          addToCart={addToCart}
-          count={count}
-          setCount={setCount}
-          isProductAdded={isProductAdded}
-        />
+        <ItemCount onAdd={onAdd} isProductAdded={isProductAdded} />
       </Paper>
     </article>
   );

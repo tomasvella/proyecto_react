@@ -12,7 +12,7 @@ const ItemListContainer = () => {
 
   const setFetchUrl = () => {
     if (id !== undefined) {
-      return 'https://fakestoreapi.com/products/category/' + id;
+      return `https://fakestoreapi.com/products/category/${id}`;
     } else {
       return 'https://fakestoreapi.com/products';
     }
