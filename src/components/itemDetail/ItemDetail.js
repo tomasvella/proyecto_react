@@ -6,7 +6,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
 import { toast } from 'react-toastify';
-import { useCustomContext } from '../../context/CartContext';
+import { useCustomContext } from '../context/CartContext';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Img = styled('img')({

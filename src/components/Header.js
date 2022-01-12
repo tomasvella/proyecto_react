@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useCustomContext } from '../context/CartContext';
+import { useCustomContext } from './context/CartContext';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import '../css/header.css';
 

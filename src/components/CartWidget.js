@@ -1,4 +1,4 @@
-import { useCustomContext } from '../context/CartContext';
+import { useCustomContext } from './context/CartContext';
 import { Link } from 'react-router-dom';
 import '../css/cartwidget.css';
 import '../css/buttons.css';
