@@ -14,27 +14,38 @@ const CustomProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (count, product) => {
-    const item = cartItems.find((item) => item.id === product.id);
+    const copyCartItems = [...cartItems];
+    const itemIndex = copyCartItems.find((item) => item.id === product.id);
 
-    if (item) {
-      item.count += count;
+    if (itemIndex) {
+      itemIndex.count += count;
+      itemIndex.totalPrice = itemIndex.count * itemIndex.price;
     } else {
-      setCartItems([...cartItems, { ...product, count }]);
+      copyCartItems.push({
+        ...product,
+        count,
+        totalPrice: product.price * count,
+      });
     }
 
+    setCartItems(copyCartItems);
     setTotalPrice(totalPrice + product.price * count);
     setTotalQuantity(totalQuantity + count);
   };
 
   const removeOneFromCart = (id) => {
-    const item = cartItems.find((item) => item.id === id);
+    const copyCartItems = [...cartItems];
+    const itemIndex = copyCartItems.findIndex((item) => item.id === id);
+    const item = copyCartItems[itemIndex];
 
-    if (item.count === 1) {
-      setCartItems(cartItems.filter((item) => item.id !== id));
-    } else {
+    if (item.count > 1) {
       item.count -= 1;
+      item.totalPrice = item.count * item.price;
+    } else {
+      copyCartItems.splice(itemIndex, 1);
     }
 
+    setCartItems(copyCartItems);
     setTotalPrice(totalPrice - item.price);
     setTotalQuantity(totalQuantity - 1);
   };

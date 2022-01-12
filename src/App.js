@@ -4,7 +4,7 @@ import ItemListContainer from './components/itemList/ItemListContainer';
 import ItemDetailContainer from './components/itemDetail/ItemDetailContainer';
 import CartWidget from './components/CartWidget';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import CustomProvider, { Provider } from './context/CartContext';
+import CustomProvider from './context/CartContext';
 import './css/app.css';
 
 const App = () => {
