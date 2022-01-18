@@ -37,11 +37,20 @@ const ItemDetail = ({ product }) => {
 
   return (
     <article className='product'>
-      <h1>Detalle del producto</h1>
-      <Paper sx={{ p: 2, margin: 'auto', maxWidth: 500, flexGrow: 1 }}>
+      <h1 style={{ textAlign: 'center', fontSize: '2em' }}>
+        Detalle del producto
+      </h1>
+      <Paper
+        sx={{
+          p: 2,
+          margin: 'auto',
+          maxWidth: 1000,
+          flexGrow: 1,
+        }}
+      >
         <Grid container spacing={2}>
           <Grid item>
-            <ButtonBase sx={{ width: 128, height: 128 }}>
+            <ButtonBase sx={{ width: 256, height: 256 }}>
               <Img alt={product.title} src={product.image} />
             </ButtonBase>
           </Grid>

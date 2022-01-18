@@ -15,7 +15,7 @@ const Img = styled('img')({
 const Item = ({ id, title, image, price, description }) => {
   return (
     <Paper sx={{ p: 2, margin: 'auto', maxWidth: 500, flexGrow: 1 }}>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} style={{ alignItems: 'center' }}>
         <Grid item>
           <ButtonBase sx={{ width: 128, height: 128 }}>
             <Link to={`/product/${id}`}>

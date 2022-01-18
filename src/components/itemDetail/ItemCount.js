@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../css/buttons.css';
+import { flexbox } from '@mui/system';
 
 const ItemCount = ({ stock, onAdd, isProductAdded }) => {
   const [count, setCount] = useState(1);
@@ -26,10 +27,16 @@ const ItemCount = ({ stock, onAdd, isProductAdded }) => {
     onAdd(count);
   };
 
+  const flexButtons = {
+    justifyContent: 'center',
+    gap: '1vh',
+    flexWrap: 'wrap',
+  };
+
   return (
     <div className='product-detail'>
       <p>Cantidad a comprar: {count}</p>
-      <CardActions>
+      <CardActions style={flexButtons}>
         <Button className='button' onClick={increment} size='small'>
           +
         </Button>

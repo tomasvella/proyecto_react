@@ -15,10 +15,8 @@ const Header = ({ links }) => {
         <ul>
           {links.map((link) => {
             return (
-              <li>
-                <NavLink key={link.id} to={link.path}>
-                  {link.name}
-                </NavLink>
+              <li key={link.id}>
+                <NavLink to={link.path}>{link.name}</NavLink>
               </li>
             );
           })}
@@ -33,7 +31,7 @@ const Header = ({ links }) => {
           ) : null}
         </ul>
       </nav>
-      <label for='nav-toggle' class='nav-toggle-label'>
+      <label htmlFor='nav-toggle' className='nav-toggle-label'>
         <span></span>
       </label>
     </header>

@@ -1,6 +1,7 @@
 import ItemDetail from './ItemDetail';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { queryDetail } from '../../db/queryDetail';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
@@ -9,22 +10,9 @@ const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
 
-  const fetchProduct = () => {
-    fetch('https://fakestoreapi.com/products/' + id)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setProduct(data);
-      })
-      .then(() => {
-        setLoading(false);
-      });
-  };
-
   useEffect(() => {
-    fetchProduct();
-  }, []);
+    queryDetail(id, setProduct, setLoading);
+  }, [id]);
 
   return loading ? (
     <Box>
