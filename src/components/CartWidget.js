@@ -1,13 +1,16 @@
 import { useCustomContext } from './context/CartContext';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { newSell } from '../db/newSell';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { ToastContainer } from 'react-toastify';
 import '../css/cartwidget.css';
 import '../css/buttons.css';
+import '../css/cartitems.css';
 
 const style = {
   position: 'absolute',
@@ -27,31 +30,26 @@ const CartWidget = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [buyerData, setBuyerData] = useState({});
-  const [buyerName, setBuyerName] = useState('');
-  const [buyerMail, setBuyerMail] = useState('');
-  const [buyerPhone, setBuyerPhone] = useState('');
+  const [name, setName] = useState('');
+  const [mail, setMail] = useState('');
+  const [phone, setPhone] = useState('');
 
-  const saveName = (e) => {
-    setBuyerName(e.target.value);
+  const nameCapture = (e) => {
+    setName(e.target.value);
   };
 
-  const saveMail = (e) => {
-    setBuyerMail(e.target.value);
+  const mailCapture = (e) => {
+    setMail(e.target.value);
   };
 
-  const savePhone = (e) => {
-    setBuyerPhone(e.target.value);
+  const phoneCapture = (e) => {
+    setPhone(e.target.value);
   };
 
-  const saveBuyerData = (e) => {
-    e.preventDefault();
-    setBuyerData({
-      name: saveName,
-      phone: savePhone,
-      mail: saveMail,
-    });
-    setOpen(false);
+  const userData = {
+    name,
+    mail,
+    phone,
   };
 
   return (
@@ -61,9 +59,13 @@ const CartWidget = () => {
           <ul>
             {cartItems.map((item) => {
               return (
-                <div key={item.id}>
+                <div key={item.id} className='cart-item-container'>
                   <div className='cart-item'>
-                    <img src={item.image} alt={item.title} />
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className='cart-item-img'
+                    />
                     <div>
                       <h3>{item.title}</h3>
                       <p>Precio: ${item.price}</p>
@@ -73,7 +75,7 @@ const CartWidget = () => {
                       className='button'
                       onClick={() => removeOneFromCart(item.id)}
                     >
-                      Eliminar
+                      Eliminar 1
                     </button>
                   </div>
                 </div>
@@ -89,7 +91,7 @@ const CartWidget = () => {
           </p>
         )}
         {cartItems.length > 0 ? (
-          <div>
+          <div className='cart-total-container'>
             <p className='cart-count'> Productos Totales: {totalQuantity}</p>
             <p className='cart-total'> Total a pagar: ${totalPrice}</p>
             <button className='button' onClick={handleOpen}>
@@ -129,25 +131,37 @@ const CartWidget = () => {
                       <label htmlFor='name'>Nombre y apellido:</label>
                       <input
                         type='text'
-                        onChange={saveName}
+                        onChange={nameCapture}
                         style={{ width: '100%' }}
                       />{' '}
                       <br />
                       <label htmlFor='phone'>Telefono:</label>
                       <input
                         type='number'
-                        onChange={savePhone}
+                        onChange={phoneCapture}
                         style={{ width: '100%' }}
                       />{' '}
                       <br />
                       <label htmlFor='email'>Correo:</label>
                       <input
                         type='email'
-                        onChange={saveMail}
+                        onChange={mailCapture}
                         style={{ width: '100%' }}
                       />
                     </Typography>
-                    <button className='button' onClick={saveBuyerData}>
+                    <button
+                      className='button'
+                      onClick={(e) =>
+                        newSell(
+                          e,
+                          userData,
+                          cartItems,
+                          totalPrice,
+                          clearCart,
+                          handleClose
+                        )
+                      }
+                    >
                       Enviar
                     </button>
                   </form>
@@ -159,6 +173,17 @@ const CartWidget = () => {
             </button>
           </div>
         ) : null}
+        <ToastContainer
+          position='bottom-right'
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </div>
     </div>
   );

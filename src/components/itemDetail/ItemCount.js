@@ -5,9 +5,8 @@ import { Link } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../css/buttons.css';
-import { flexbox } from '@mui/system';
 
-const ItemCount = ({ stock, onAdd, isProductAdded }) => {
+const ItemCount = ({ onAdd, isProductAdded }) => {
   const [count, setCount] = useState(1);
 
   const increment = (e) => {

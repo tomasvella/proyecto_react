@@ -10,7 +10,11 @@ export const queryDetail = (id, setProduct, setLoading) => {
   getDoc(consult)
     .then((result) => {
       // Se obtienen los datos del documento
-      setProduct(result.data());
+      const id = result.id;
+      const data = result.data();
+      // Se crea un objeto nuevo con el id y los datos del documento
+      const product = { id, ...data };
+      setProduct(product);
       setLoading(false);
     })
     .catch((error) => {
