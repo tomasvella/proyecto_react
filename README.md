@@ -38,7 +38,7 @@ La consola levantará el proyecto y nos indicará bajo que dominio se encuentra,
 El sitio se alimenta de una base de datos que se conecta a través de Firebase (Firestore), lo que permite mostrar los prodctos que se quieren comercializar, utilizando useEffect y useState. Además también se pueden filtrar por categoría desde el menu superior. Cada producto también tiene un ID único el cual permite acceder a través de un link, capturado a través de useParams.
 
 ![home](https://i.ibb.co/QdZx5fJ/inicio.png)
-![electronics](https://i.ibb.co/ScPZmKc/electronics.png)
+![electronics](https://i.ibb.co/VJ5N7Wm/electronics.png)
 ![jewelery](https://i.ibb.co/rZtqhqp/jewelery.png)
 
 Al ingresar al un producto podemos ver su descripción y la aparición de botones que permiten sumar la cantidad de productos que se desee agregar al carrito y por consecuencia la adición. Una vez agregado se habilita un nuevo boton que nos permite finalizar la compra redirigiéndonos directamente al carrito (el cual también se actualiza con la cantidad de prodcutos agregados según el tipo, por ejemplo si se agregan 2 monitores en el widget del carrito solamente va a figurar 1 solo tipo de producto).
