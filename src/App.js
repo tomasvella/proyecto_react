@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import ItemListContainer from './components/itemList/ItemListContainer';
+import ItemDetailContainer from './components/itemDetail/ItemDetailContainer';
+import CartWidget from './components/CartWidget';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import CustomProvider from './components/context/CartContext';
+import './css/app.css';
 
-function App() {
+const App = () => {
+  const links = [
+    { name: 'Inicio', path: '/', id: 1 },
+    { name: 'Electrónica', path: 'category/electronics', id: 2 },
+    { name: 'Joyería', path: 'category/jewelery', id: 3 },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CustomProvider>
+      <BrowserRouter>
+        <Header links={links} />
+        <main>
+          <Routes>
+            <Route path='/' element={<ItemListContainer />} />
+            <Route
+              path='/category/:id'
+              element={<ItemListContainer links={links} />}
+            />
+            <Route path='/product/:id' element={<ItemDetailContainer />} />
+            <Route path='/cart' element={<CartWidget />} />
+          </Routes>
+        </main>
+        <Footer />
+      </BrowserRouter>
+    </CustomProvider>
   );
-}
+};
 
 export default App;

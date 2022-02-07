@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --background-header-color: hsl(221, 89%, 22%);
+  --background-body-color: hsl(221, 85%, 36%);
+  --font-color: hsl(40, 100%, 51%);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--background-body-color);
+  color: var(--font-color);
+}
+
+#root {
+  min-height: 100vh;
+  position: relative;
+}
