@@ -23,7 +23,6 @@ const ItemDetail = ({ product }) => {
   const onAdd = (count) => {
     addToCart(count, product);
     setIsProductAdded(true);
-    console.log(`Cantidad de productos en el carrito: ${count}`);
     toast.success('Producto agregado al carrito.', {
       position: 'bottom-right',
       autoClose: 5000,
@@ -65,6 +64,9 @@ const ItemDetail = ({ product }) => {
                 </Typography>
                 <Typography variant='body2' color='text.secondary'>
                   ID: {product.id}
+                </Typography>
+                <Typography variant='body2' color='text.secondary'>
+                  Stock: {product.stock}
                 </Typography>
               </Grid>
             </Grid>

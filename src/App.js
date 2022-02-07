@@ -1,5 +1,5 @@
 import Header from './components/Header';
-// import Footer from './components/Footer';
+import Footer from './components/Footer';
 import ItemListContainer from './components/itemList/ItemListContainer';
 import ItemDetailContainer from './components/itemDetail/ItemDetailContainer';
 import CartWidget from './components/CartWidget';
@@ -29,7 +29,7 @@ const App = () => {
             <Route path='/cart' element={<CartWidget />} />
           </Routes>
         </main>
-        {/* <Footer /> */}
+        <Footer />
       </BrowserRouter>
     </CustomProvider>
   );
